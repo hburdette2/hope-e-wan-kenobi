@@ -20,16 +20,14 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/" render={(props) => (
                             <div className="App-links justify-content-center">
-                                {this.state.results.length > 0
-                                    ?
-                                    this.state.results.map((result, id) =>
-                                        (
+                                this.state.results.map((result, id) =>
+                                    (
                                             <Link key={id} to={`/${result.name}`} >
-                                                {result.name}
-                                            </Link>
-                                        )
-                                    ) : 'Loading...'
-                                }
+                                    {result.name}
+                                </Link>
+                                )
+                            )
+                        }
                             </div>
                         )} />
                         {this.state.results.map((result, id) =>
