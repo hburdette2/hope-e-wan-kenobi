@@ -22,7 +22,7 @@ class App extends Component {
                             <div className="App-links justify-content-center">
                                 this.state.results.map((result, id) =>
                                     (
-                                            <Link key={id} to={`/${result.name}`} >
+                                <Link key={id} to={`/${result.name}`} >
                                     {result.name}
                                 </Link>
                                 )
