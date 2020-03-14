@@ -5,6 +5,6 @@ function getSwapiShips() {
     }).then(res => res.json());
 }
 
-export default {
+export {
     getSwapiShips
 }

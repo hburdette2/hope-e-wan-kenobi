@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import './App.css';
-import getSwapiShips from '../services/swapi';
+import { getSwapiShips } from '../services/swapi';
 import Starships from '../pages/Starships/Starships';
 
 class App extends Component {
@@ -9,8 +9,8 @@ class App extends Component {
         results: []
     }
     async componentDidMount() {
-        const ships = await getSwapiShips
-        this.setState({ results: ships });
+        const { results } = await getSwapiShips()
+        this.setState({ results });
     }
     render() {
         return (
@@ -20,21 +20,18 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/" render={(props) => (
                             <div className="App-links justify-content-center">
-                                this.state.results.map((result, id) =>
-                                    (
-                                <Link key={id} to={`/${result.name}`} >
-                                    {result.name}
-                                </Link>
-                                )
-                            )
-                        }
+                                {
+                                    this.state.results.map((result, id) =>
+                                        (
+                                            <Link key={id} to={`/${result.name}`} >
+                                                {result.name}
+                                            </Link>
+                                        )
+                                    )
+                                }
                             </div>
                         )} />
-                        {this.state.results.map((result, id) =>
-                            <Route exact path={`/${result.name}`}
-                                render={(props) =>
-                                    <Starships {...props} key={id} result={result} />}
-                            />)}
+
                     </Switch>
                 </div>
             </div>
